@@ -12,7 +12,9 @@ class MyApp extends StatelessWidget {
     return StreamProvider<User>.value(
       value: AuthService().user,
       child: MaterialApp(
+        //wrapper decide which screen to show
         home: Wrapper(),
+        //remove debug icon from top right
         debugShowCheckedModeBanner: false,
       ),
     );
