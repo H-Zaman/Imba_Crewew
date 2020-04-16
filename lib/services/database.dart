@@ -17,4 +17,8 @@ class DatabaseService {
     });
   }
 
+  //stream to notify database changes
+  Stream<QuerySnapshot> get brews {
+    return brewCollection.snapshots();
+  }
 }

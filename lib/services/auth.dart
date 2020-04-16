@@ -1,12 +1,12 @@
 import 'package:brewcrew/models/user.dart';
-import 'package:brewcrew/screens/home/database.dart';
+import 'package:brewcrew/services/database.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
 class AuthService{
 
   final FirebaseAuth _auth = FirebaseAuth.instance;
 
-  //create user object based on firebase user
+  //create user object based on firebase userK
   User _userFromFirebaseUser(FirebaseUser user){
     return user != null ? User(uid: user.uid) : null;
   }
