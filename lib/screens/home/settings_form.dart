@@ -11,7 +11,6 @@ class _SettingsFormState extends State<SettingsForm> {
 
   final _formKey = GlobalKey<FormState>();
   final List<String> sugarValue = ['0', '1', '2', '4', '5'];
-  final List<int> sugarsss = [0,1,2,3,4,5];
   String _currentName;
   String _currentSugar;
   int _currentStrength;
