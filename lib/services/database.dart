@@ -1,4 +1,5 @@
 import 'package:brewcrew/models/brew.dart';
+import 'package:brewcrew/models/user.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class DatabaseService {
@@ -25,9 +26,19 @@ class DatabaseService {
           name : doc.data['name'] ?? 'null',
           //TODO: sugar or sugars
           sugar : doc.data['sugar'] ?? 'null',
-          strength : doc.data['strength'] ?? 0,
+          strength : doc.data['strength'] ?? 100,
       );
     }).toList();
+  }
+
+  //User data from Snapshot
+  UserData _userDataFromSnapshot(DocumentSnapshot snapshot) {
+    return UserData(
+      uid: uid,
+      name: snapshot.data['name'],
+      sugars: snapshot.data['sugar'],
+      strength: snapshot.data['strength'],
+    );
   }
 
   //stream to notify database changes
@@ -35,5 +46,9 @@ class DatabaseService {
     return brewCollection.snapshots()
         .map(_brewListFromDocuments);
   }
-
+  //get user doc stream
+  Stream<UserData> get userData {
+    return brewCollection.document(uid).snapshots()
+    .map(_userDataFromSnapshot);
+  }
 }

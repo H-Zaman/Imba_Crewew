@@ -49,6 +49,12 @@ class _SignInState extends State<SignIn> {
         elevation: 0.0,
       ),
       body: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('assets/signin_bg.jpg'),
+            fit: BoxFit.cover,
+          )
+        ),
         padding: EdgeInsets.symmetric(vertical: 20,horizontal: 50),
         child: Form(
           key: _formState,
